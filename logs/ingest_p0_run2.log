@@ -1,0 +1,77 @@
+26/11/15 16:06:21 INFO SparkContext: Running Spark version 3.5.3
+26/11/15 16:06:21 INFO SparkContext: OS info Linux, 6.8.0-149-generic, amd64
+26/11/15 16:06:21 INFO SparkContext: Java version 11.0.33
+26/11/15 16:06:21 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/11/15 16:06:21 INFO ResourceUtils: ==============================================================
+26/11/15 16:06:21 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/11/15 16:06:21 INFO ResourceUtils: ==============================================================
+26/11/15 16:06:21 INFO SparkContext: Submitted application: ingest-phase-0
+26/11/15 16:06:21 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/11/15 16:06:22 INFO ResourceProfile: Limiting resource is cpu
+26/11/15 16:06:22 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/11/15 16:06:22 INFO SecurityManager: Changing view acls to: vmware,pes2ug24cs537
+26/11/15 16:06:22 INFO SecurityManager: Changing modify acls to: vmware,pes2ug24cs537
+26/11/15 16:06:22 INFO SecurityManager: Changing view acls groups to: 
+26/11/15 16:06:22 INFO SecurityManager: Changing modify acls groups to: 
+26/11/15 16:06:22 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: vmware, pes2ug24cs537; groups with view permissions: EMPTY; users with modify permissions: vmware, pes2ug24cs537; groups with modify permissions: EMPTY
+26/11/15 16:06:22 INFO Utils: Successfully started service 'sparkDriver' on port 45055.
+26/11/15 16:06:22 INFO SparkEnv: Registering MapOutputTracker
+26/11/15 16:06:22 INFO SparkEnv: Registering BlockManagerMaster
+26/11/15 16:06:22 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/11/15 16:06:22 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/11/15 16:06:22 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/11/15 16:06:22 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-29c0bc66-b233-4923-9221-6370610c18f7
+26/11/15 16:06:22 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+26/11/15 16:06:22 INFO SparkEnv: Registering OutputCommitCoordinator
+26/11/15 16:06:22 INFO JettyUtils: Start Jetty 10.108.165.201:4040 for SparkUI
+26/11/15 16:06:22 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/11/15 16:06:23 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://node3:7077...
+26/11/15 16:06:23 INFO TransportClientFactory: Successfully created connection to node3/10.108.165.243:7077 after 283 ms (0 ms spent in bootstraps)
+26/11/15 16:06:24 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20261115213623-0004
+26/11/15 16:06:24 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261115213623-0004/0 on worker-20261115205711-10.108.165.243-45727 (10.108.165.243:45727) with 2 core(s)
+26/11/15 16:06:24 INFO StandaloneSchedulerBackend: Granted executor ID app-20261115213623-0004/0 on hostPort 10.108.165.243:45727 with 2 core(s), 1024.0 MiB RAM
+26/11/15 16:06:24 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20261115213623-0004/1 on worker-20261115152755-10.108.165.63-43527 (10.108.165.63:43527) with 2 core(s)
+26/11/15 16:06:24 INFO StandaloneSchedulerBackend: Granted executor ID app-20261115213623-0004/1 on hostPort 10.108.165.63:43527 with 2 core(s), 1024.0 MiB RAM
+26/11/15 16:06:24 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 40295.
+26/11/15 16:06:24 INFO NettyBlockTransferService: Server created on node1 0.0.0.0:40295
+26/11/15 16:06:24 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20261115213623-0004/0 is now RUNNING
+26/11/15 16:06:24 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/11/15 16:06:24 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, node1, 40295, None)
+26/11/15 16:06:24 INFO BlockManagerMasterEndpoint: Registering block manager node1:40295 with 434.4 MiB RAM, BlockManagerId(driver, node1, 40295, None)
+26/11/15 16:06:24 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, node1, 40295, None)
+26/11/15 16:06:24 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, node1, 40295, None)
+26/11/15 16:06:24 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+>> VALIDATION phase=0 file=hdfs:///input/phase0/pages.jsonl
+>>   lines total        : 1040
+>>   rejected bad_json  : 20
+>>   valid records      : 1020
+>>   duplicates removed : 20
+>>   unique doc_ids     : 1000  (tombstones: 0)
+>> CHANGES: inserted=0 updated=0 deleted=0 unchanged=1000 stale(older version)=0 delete-of-missing=0
+>> pages: nothing to merge (idempotent re-run)
+>> raw_links: unchanged
+>> links: declared=499 valid=499 dangling/removed=0
+>> links: unchanged
+>> snapshots of lake.db.pages:
++-----------------------+-------------------+---------+-----+-------+-----+
+|committed_at           |snapshot_id        |operation|added|deleted|total|
++-----------------------+-------------------+---------+-----+-------+-----+
+|2026-11-15 15:41:02.557|5580866384736278583|append   |1000 |NULL   |1000 |
++-----------------------+-------------------+---------+-----+-------+-----+
+
+>> snapshots of lake.db.raw_links:
++----------------------+-------------------+---------+-----+-------+-----+
+|committed_at          |snapshot_id        |operation|added|deleted|total|
++----------------------+-------------------+---------+-----+-------+-----+
+|2026-11-15 15:41:41.72|6597436444339826331|overwrite|499  |NULL   |499  |
++----------------------+-------------------+---------+-----+-------+-----+
+
+>> snapshots of lake.db.links:
++-----------------------+-------------------+---------+-----+-------+-----+
+|committed_at           |snapshot_id        |operation|added|deleted|total|
++-----------------------+-------------------+---------+-----+-------+-----+
+|2026-11-15 15:42:49.709|7312161761555213273|overwrite|499  |NULL   |499  |
++-----------------------+-------------------+---------+-----+-------+-----+
+
+>> FINAL COUNTS: pages=1000 links=499
+>> NEW SNAPSHOTS this run: pages=0 raw_links=0 links=0
