@@ -1,0 +1,64 @@
+Asking for sudo once (needed only to read zerotier-cli and ufw status)...
+== 1. Identity ==
+  [INFO] hostname=node2  user=pes2ug24cs537  ZeroTier IP(s)=10.108.165.63 
+  [PASS] this VM is node2 by its ZeroTier IP 10.108.165.63
+  [PASS] hostname matches (node2)
+  [PASS] user is pes2ug24cs537
+  [INFO] cloud-init may reset hostname on reboot (preserve_hostname: false)
+== 2. /etc/hosts and name resolution ==
+  [PASS] no 127.0.1.1 line
+  [PASS] node1 -> 10.108.165.201
+  [PASS] node2 -> 10.108.165.63
+  [FAIL] node3 resolves to '10.108.165.218', expected 10.108.165.243
+  [PASS] node4 -> 10.108.165.154
+  [INFO] hosts line 9:10.108.165.A  node1
+  [INFO] hosts line 10:10.108.165.B  node2
+  [INFO] hosts line 11:10.108.165.C  node3
+  [INFO] hosts line 12:10.108.165.D  node4
+  [INFO] hosts line 13:10.108.165.A  node1
+  [INFO] hosts line 14:10.108.165.B  node2
+  [INFO] hosts line 15:10.108.165.C  node3
+  [INFO] hosts line 16:10.108.165.D  node4
+  [INFO] hosts line 17:10.108.165.201 node1
+  [INFO] hosts line 18:10.108.165.63  node2
+  [INFO] hosts line 19:10.108.165.218  node3
+  [INFO] hosts line 20:10.108.165.154  node4
+== 3. Connectivity (ping by IP, avg ms) ==
+  [PASS] ping node1  avg 297.211 ms
+  [PASS] ping node3  avg 52.565 ms
+  [PASS] ping node4  avg 141.524 ms
+== 4. ZeroTier ==
+  [INFO] 200 info fc761ad927 1.16.2 ONLINE
+  [INFO] 200 listnetworks <nwid> <name> <mac> <status> <type> <dev> <ZT assigned ips>
+  [INFO] 200 listnetworks 08752e18b1d7384e team 1 4e:c4:a1:ab:c1:09 OK PRIVATE ztcdcpsih7 10.108.165.63/24
+  [INFO] peers (LEAF rows = other VMs; want DIRECT, not RELAY):
+         <ztaddr>   <ver>  <role> <lat> <link>   <lastTX> <lastRX> <path>
+         006a415552 1.16.2 LEAF      50 DIRECT   1909     1909     49.207.247.231/7235
+         08752e18b1 1.16.2 LEAF     280 DIRECT   1243     1243     35.208.205.102/36486
+         5c5b773046 1.16.2 LEAF      -1 RELAY
+         b227cc5333 1.16.2 LEAF     134 DIRECT   365      15450    223.238.164.245/1395
+== 5. Java / Python ==
+  [PASS] java: openjdk version "11.0.33" 2026-10-20
+  [INFO] python3 -> Python 3.12.3
+  [PASS] python3.12 present: Python 3.12.3 (/bin/python3.12)
+== 6. Environment variables (from ~/.bashrc) ==
+  [PASS] JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+  [PASS] HADOOP_HOME=/home/pes2ug24cs537/hadoop
+  [PASS] HADOOP_CONF_DIR=/home/pes2ug24cs537/hadoop/etc/hadoop
+  [PASS] SPARK_HOME=/home/pes2ug24cs537/spark
+  [FAIL] HADOOP_USER_NAME is EMPTY
+  [PASS] PYSPARK_PYTHON=/usr/bin/python3.10
+  [PASS] PYSPARK_DRIVER_PYTHON=/usr/bin/python3.10
+  [INFO] hadoop: Hadoop 3.3.6
+  [INFO] spark:  Spark 3.5.3 (git revision 32232e9ed33) built for Hadoop 3.3.4
+  [PASS] iceberg jar: iceberg-spark-runtime-3.5_2.12-1.6.1.jar
+  [INFO] core-site.xml: fs.defaultFS hdfs://node2:9000
+  [INFO] hdfs-site.xml: dfs.replication 2 dfs.namenode.name.dir file:///home/pes2ug24cs537/hdfs/namenode dfs.datanode.data.dir file:///home/pes2ug24cs537/hdfs/datanode dfs.namenode.rpc-bind-host 0.0.0.0 dfs.client.use.datanode.hostname false dfs.datanode.use.datanode.hostname false dfs.namenode.datanode.registration.ip-hos
+  [INFO] spark-env.sh: export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64|export HADOOP_CONF_DIR=/home/pes2ug24cs537/hadoop/etc/hadoop|export SPARK_WORKER_CORES=2|export SPARK_WORKER_MEMORY=2g|export PYSPARK_PYTHON=python3|export SPARK_LOCAL_IP=10.108.165.63|export HADOOP_USER_NAME=pes2ug24cs537
+  [INFO] spark-defaults.conf: spark.master                         spark://node3:7077|spark.driver.host                    node2|spark.driver.bindAddress             0.0.0.0|spark.sql.extensions                 org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions|spark.sql.catalog.lake               org.apache.icebe
+== 7. Misc ==
+  [PASS] ~/search exists
+  [INFO] sshd: active   ufw: Status: inactive
+  [INFO] disk free on ~: 21G   RAM: 5.7Gi total, 4.4Gi avail   CPUs: 2
+  [INFO] jps: 
+== SUMMARY: node2 has 2 FAIL(s) ==
